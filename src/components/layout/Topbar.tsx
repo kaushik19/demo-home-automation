@@ -60,7 +60,14 @@ export function Topbar({ ownerName, unreadAlerts = 0 }: Props) {
     <header className="sticky top-0 z-20 bg-surface/80 backdrop-blur border-b border-surface-sunken">
       <div className="flex items-center gap-3 px-4 lg:px-8 py-3">
         <div className="lg:hidden">
-          <img src="/babcom-logo-black.svg" alt="Babcom" className="h-7 w-auto" />
+          <img
+            src="/babcom-logo-black.png"
+            alt="Babcom"
+            className="h-7 w-auto object-contain"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = "/babcom-logo-black.svg";
+            }}
+          />
         </div>
         <div className="min-w-0 flex-1">
           <h1 className="text-base lg:text-lg font-semibold text-brand-500 truncate m-0">

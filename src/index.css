@@ -23,17 +23,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ------------------------------------------------------------
+ * Babcom typography standard
+ *   Family : Montserrat (loaded from index.html)
+ *   Heading colour : #14587F
+ *   Hierarchy : 800 for hero, 700 for section, 600 for sub
+ * ----------------------------------------------------------- */
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family: "Montserrat", system-ui, sans-serif;
     color: #14587f;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
+    line-height: 1.18;
   }
-  h1 { @apply text-3xl; }
-  h2 { @apply text-2xl; }
-  h3 { @apply text-xl; }
-  h4 { @apply text-lg; }
+  h1 { @apply text-[28px] md:text-[32px] font-extrabold; }
+  h2 { @apply text-[22px] md:text-[24px] font-bold; }
+  h3 { @apply text-[18px] md:text-[20px] font-bold; }
+  h4 { @apply text-[16px] md:text-[17px] font-semibold; }
+  h5 { @apply text-[14px] font-semibold; }
+  h6 { @apply text-[12px] font-semibold uppercase tracking-[0.12em]; }
+
+  body { font-feature-settings: "ss01", "cv11"; }
 }
 
 @layer components {

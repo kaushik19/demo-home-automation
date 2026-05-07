@@ -20,15 +20,17 @@ export function Sidebar() {
   const shell = useAppShell();
   return (
     <aside className="hidden lg:flex flex-col w-64 shrink-0 bg-surface border-r border-surface-sunken h-screen sticky top-0">
-      <div className="px-6 pt-6 pb-4">
-        {/* Drop-in: replace public/babcom-logo-black.svg with the official PNG/SVG */}
+      <div className="px-6 pt-6 pb-5">
         <img
-          src="/babcom-logo-black.svg"
+          src="/babcom-logo-black.png"
           alt="Babcom"
-          className="h-9 w-auto select-none"
+          className="h-10 w-auto select-none object-contain"
           draggable={false}
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).src = "/babcom-logo-black.svg";
+          }}
         />
-        <p className="mt-2 text-xs font-semibold tracking-wider uppercase text-ink-500">
+        <p className="mt-3 text-[11px] font-bold tracking-[0.18em] uppercase text-brand-500">
           Home Automation
         </p>
       </div>
