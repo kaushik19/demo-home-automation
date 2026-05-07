@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #14587f;
+  --brand-600: #114e70;
+  --ink-900: #0f1b22;
+  --surface-muted: #f5f8fa;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Montserrat", system-ui, -apple-system, sans-serif;
+  color: #0f1b22;
+  background-color: #f5f8fa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", system-ui, sans-serif;
+    color: #14587f;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  h1 { @apply text-3xl; }
+  h2 { @apply text-2xl; }
+  h3 { @apply text-xl; }
+  h4 { @apply text-lg; }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface rounded-2xl shadow-card p-5;
+  }
+  .card-muted {
+    @apply bg-surface-muted rounded-2xl p-5;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all;
+  }
+  .btn-primary {
+    @apply btn bg-brand-500 text-white hover:bg-brand-600 shadow-sm;
+  }
+  .btn-ghost {
+    @apply btn text-ink-700 hover:bg-surface-muted;
+  }
+  .btn-soft {
+    @apply btn bg-brand-50 text-brand-600 hover:bg-brand-100;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-ink-700 font-medium transition-colors hover:bg-brand-50 hover:text-brand-600;
+  }
+  .nav-item.active {
+    @apply bg-brand-500 text-white hover:bg-brand-600 hover:text-white shadow-sm;
+  }
+  .input {
+    @apply w-full text-sm text-ink-900 bg-surface-muted rounded-xl px-3 py-2.5 border border-transparent
+           outline-none focus:bg-surface focus:border-brand-200 focus:ring-2 focus:ring-brand-100
+           placeholder:text-ink-500 transition-colors;
+  }
+  textarea.input { @apply py-2 leading-snug; }
+  select.input { @apply pr-9 appearance-none bg-[length:14px] bg-[right_0.75rem_center] bg-no-repeat
+    bg-[url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2712%27%20height%3D%2712%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%235C6B74%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpolyline%20points%3D%276%209%2012%2015%2018%209%27%2F%3E%3C%2Fsvg%3E")];
+  }
+}
+
+/* Subtle pulse for live indicators */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.92); }
+}
+.live-dot { animation: live-pulse 1.6s ease-in-out infinite; }
+
+/* Modal + toast micro-animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+@keyframes typingBlink {
+  0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
+  40%           { opacity: 1;    transform: translateY(-2px); }
+}
+.typing-dot { animation: typingBlink 1.2s infinite ease-in-out; }
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.30s; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #cfe0e9; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #9fc1d2; }
